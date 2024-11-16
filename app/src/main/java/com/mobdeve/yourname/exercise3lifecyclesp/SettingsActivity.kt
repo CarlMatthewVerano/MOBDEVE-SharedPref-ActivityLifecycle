@@ -37,21 +37,18 @@ class SettingsActivity : AppCompatActivity() {
         super.onPause()
         val sp : SharedPreferences = getSharedPreferences("Pref", Context.MODE_PRIVATE)
         val editor = sp.edit()
-        Log.d("ON PAUSE VALUE:",this.returnInt(linearViewSwitch.isChecked).toString() )
-        Log.d("ON PAUSE BOOL VALUE:", this.hideLikeSwitch.isChecked.toString() )
+
         editor.putInt("KEY_LAYOUT", this.returnInt(linearViewSwitch.isChecked))
-        editor.putBoolean("KEY_BOOL_LINEAR_SWITCH", this.linearViewSwitch.isChecked)
-        editor.putBoolean("KEY_BOOL_LIKE", this.hideLikeSwitch.isChecked)
+        editor.putBoolean("KEY_LINEAR_SWITCH", this.linearViewSwitch.isChecked)
+        editor.putBoolean("KEY_LIKE", this.hideLikeSwitch.isChecked)
         editor.apply()
     }
 
     override fun onResume() {
         super.onResume()
         val sp : SharedPreferences = getSharedPreferences("Pref", Context.MODE_PRIVATE)
-        this.linearViewSwitch.isChecked = sp.getBoolean("KEY_BOOL_LINEAR_SWITCH", returnBoolean(viewSelected))
-        this.hideLikeSwitch.isChecked = sp.getBoolean("KEY_BOOL_LIKE", this.hideLikeSelected)
-        Log.d("ON RESUME VALUE:",linearViewSwitch.isChecked.toString())
-        Log.d("ON RESUME BOOL VALUE:", this.hideLikeSwitch.isChecked.toString() )
+        this.linearViewSwitch.isChecked = sp.getBoolean("KEY_LINEAR_SWITCH", returnBoolean(viewSelected))
+        this.hideLikeSwitch.isChecked = sp.getBoolean("KEY_LIKE", this.hideLikeSelected)
     }
 
     /*

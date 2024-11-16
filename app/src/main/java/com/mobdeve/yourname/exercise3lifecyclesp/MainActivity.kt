@@ -59,10 +59,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadDataFromSharedPreferences() {
         val sp : SharedPreferences = getSharedPreferences("Pref", Context.MODE_PRIVATE)
-        var intLayout = sp.getInt("KEY_LAYOUT", LayoutType.LINEAR_VIEW_TYPE.ordinal);
-        var boolHideLikes = sp.getBoolean("KEY_BOOL_LIKE", hideLikeButtons)
-        Log.d("VALUE ON MAIN ACT",intLayout.toString() )
-        Log.d("HIDE LIKES VALUE ON MAIN: ", boolHideLikes.toString())
+        val intLayout = sp.getInt("KEY_LAYOUT", LayoutType.LINEAR_VIEW_TYPE.ordinal);
+        val boolHideLikes = sp.getBoolean("KEY_LIKE", hideLikeButtons)
+
         this.recyclerView.layoutManager = getLayoutManager(intLayout)
 
         this.myAdapter.setViewType(intLayout)
